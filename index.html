@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="amber-sunset">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aditya (Dito.) | Full-Stack Web Developer & UI/UX Engineer</title>
+    <meta name="description"
+        content="Hi, I'm Aditya (Dito) — Full-Stack Web Developer crafting modern websites, web applications, and digital experiences that help businesses grow online.">
+    <meta name="keywords"
+        content="Aditya, Dito, Web Developer, Full-Stack Developer, UI/UX Design, Python, React, Next.js, SEO">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aditya (Dito.) | Web Developer Portfolio">
+    <meta property="og:description"
+        content="I build modern websites, web applications, and digital experiences that help businesses grow online.">
+    <meta property="og:image" content="assets/IMG_1485.PNG">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="ref-body">
+    <!-- Background Canvas for Particles / Matrix Rain -->
+    <canvas id="particleCanvas"></canvas>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Header Navigation (Matching Dito. Pill Header) -->
+    <header class="ref-header" id="mainHeader">
+        <div class="ref-header-container">
+            <a href="#home" class="ref-logo">
+                <span class="logo-name">Dito<span class="orange-dot">.</span></span>
+            </a>
+
+            <nav class="ref-nav-pill">
+                <ul class="ref-nav-links">
+                    <li><a href="#home" class="ref-nav-item active">Home</a></li>
+                    <li><a href="#about" class="ref-nav-item">About</a></li>
+                    <li><a href="services.html" class="ref-nav-item">Services</a></li>
+                    <li><a href="#estimator" class="ref-nav-item">Cost Estimator</a></li>
+                    <li><a href="#skills" class="ref-nav-item">Skills</a></li>
+                    <li><a href="#contact" class="ref-nav-item">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="ref-header-actions">
+                <!-- Theme Switcher Button -->
+                <div class="theme-switcher-wrapper">
+                    <button id="themeToggleBtn" class="ref-icon-btn" title="Cycle Color Theme"
+                        aria-label="Cycle Color Theme">
+                        <i data-lucide="palette"></i>
+                    </button>
+                    <div class="theme-menu" id="themeMenu">
+                        <button data-set-theme="amber-sunset" class="theme-opt active"><span
+                                class="color-dot amber"></span> Amber Sunset</button>
+                        <button data-set-theme="cyber-cyan" class="theme-opt"><span class="color-dot cyan"></span> Cyber
+                            Cyan</button>
+                        <button data-set-theme="hyper-violet" class="theme-opt"><span class="color-dot violet"></span>
+                            Hyper Violet</button>
+                        <button data-set-theme="matrix-emerald" class="theme-opt"><span class="color-dot matrix"></span>
+                            Matrix Green</button>
+                    </div>
+                </div>
+
+                <!-- Audio SFX Toggle Button -->
+                <button id="audioToggleBtn" class="ref-icon-btn audio-btn" title="Toggle UI Sound Effects"
+                    aria-label="Toggle Sound Effects">
+                    <div class="sound-wave">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <i data-lucide="volume-x" id="audioIcon"></i>
+                </button>
+
+                <!-- Command HUD Trigger -->
+                <button id="hudOpenBtn" class="ref-icon-btn ref-hud-btn" title="Open Terminal (Ctrl + K)">
+                    <i data-lucide="terminal"></i>
+                </button>
+
+                <!-- Primary Action Button -->
+                <a href="#contact" class="btn-ref-primary btn-nav-cta">
+                    <span>Let's Talk</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Navigation">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
+        <div class="drawer-content glass-panel">
+            <div class="drawer-top">
+                <div class="ref-logo">Dito<span class="orange-dot">.</span></div>
+                <button class="drawer-close-btn" id="drawerCloseBtn"><i data-lucide="x"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="#home" class="mobile-link active"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="#about" class="mobile-link"><i data-lucide="user"></i> About</a></li>
+                <li><a href="services.html" class="mobile-link"><i data-lucide="layout-grid"></i> Services</a></li>
+                <li><a href="#estimator" class="mobile-link"><i data-lucide="calculator"></i> Cost Estimator</a></li>
+                <li><a href="#skills" class="mobile-link"><i data-lucide="cpu"></i> Skills</a></li>
+                <li><a href="#contact" class="mobile-link"><i data-lucide="mail"></i> Contact</a></li>
+            </ul>
+            <div class="drawer-footer">
+                <a href="#contact" class="btn-ref-primary w-100 mobile-cta-btn">
+                    <span>Start a Project</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- 1. HERO SECTION (Exact Match to User Reference Screenshot) -->
+        <section id="home" class="ref-home-hero">
+            <!-- Background Large Ghost Watermark Text -->
+            <div class="ref-hero-watermark" aria-hidden="true">DEVELOPER PORTFOLIO</div>
+
+            <div class="ref-home-hero-container">
+                <!-- Left Content Column -->
+                <div class="ref-home-content">
+                    <!-- Top Pill Badge with Cyan Micro-Bar -->
+                    <div class="ref-pill-badge-top" data-sound="hover">
+                        <span class="cyan-micro-bar"></span>
+                        <span class="badge-content"><i data-lucide="sparkles" class="badge-sparkle"></i> Hello!</span>
+                    </div>
+
+                    <!-- Main Heading -->
+                    <h1 class="ref-home-heading">
+                        Hi, I'm Aditya,<br>
+                        <span class="highlight-orange">Web Developer</span>
+                    </h1>
+
+                    <!-- Subtitle -->
+                    <p class="ref-home-subtext">
+                        I build modern websites, web applications, and digital experiences that help businesses grow
+                        online.
+                    </p>
+
+                    <!-- Dual Action Buttons -->
+                    <div class="ref-home-buttons">
+                        <a href="#services" class="btn-ref-primary" data-sound="click">
+                            <span>Explore Services</span>
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                        <a href="#contact" class="btn-ref-secondary" data-sound="click">
+                            <span>Hire Me</span>
+                        </a>
+                    </div>
+
+                    <!-- Bottom-Left Rating / Experience Pill Card -->
+                    <div class="ref-exp-card glass-panel" data-sound="hover">
+                        <div class="exp-stars">
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                            <i data-lucide="star"></i>
+                        </div>
+                        <span class="exp-text">3+ Years Experience</span>
+                    </div>
+                </div>
+
+                <!-- Right Visual Area: Floating Pills Matching Reference Image -->
+                <div class="ref-home-visual-canvas">
+                    <!-- Floating Skill Pill 1 -->
+                    <div class="floating-ref-pill pill-pos-1" data-sound="hover">
+                        <span class="pill-cyan-bar"></span>
+                        <span class="pill-label-text">Fitness Coaching</span>
+                    </div>
+
+                    <!-- Floating Skill Pill 2 -->
+                    <div class="floating-ref-pill pill-pos-2" data-sound="hover">
+                        <span class="pill-cyan-bar"></span>
+                        <span class="pill-label-text">Web Development</span>
+                    </div>
+
+                    <!-- Floating Skill Pill 3 -->
+                    <div class="floating-ref-pill pill-pos-3" data-sound="hover">
+                        <span class="pill-cyan-bar"></span>
+                        <span class="pill-label-text">Python Programming</span>
+                    </div>
+
+                    <!-- Floating Skill Pill 4 -->
+                    <div class="floating-ref-pill pill-pos-4" data-sound="hover">
+                        <span class="pill-cyan-bar"></span>
+                        <span class="pill-label-text">Digital Marketing</span>
+                    </div>
+
+                    <!-- Floating Skill Pill 5 -->
+                    <div class="floating-ref-pill pill-pos-5" data-sound="hover">
+                        <span class="pill-cyan-bar"></span>
+                        <span class="pill-label-text">SEO Optimization</span>
+                    </div>
+
+                    <!-- Floating Skill Pill 6 -->
+                    <div class="floating-ref-pill pill-pos-6" data-sound="hover">
+                        <span class="pill-cyan-bar"></span>
+                        <span class="pill-label-text">UI/UX Design</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. BENTO STATS BAR -->
+        <!-- 2. BENTO STATS BAR -->
+        <section class="ref-stats-section reveal">
+            <div class="ref-stats-container">
+                <div class="ref-stat-box glass-panel spotlight-card">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-stat-icon-wrap"><i data-lucide="layers"></i></div>
+                    <div>
+                        <div class="stat-num-row">
+                            <h3 class="stat-number">02<span class="stat-plus">+</span></h3>
+                        </div>
+                        <p class="stat-name">Shipped Projects</p>
+                        <span class="stat-muted-note">SaaS, E-Com & 15+ Web Apps</span>
+                    </div>
+                </div>
+
+                <div class="ref-stat-box glass-panel spotlight-card">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-stat-icon-wrap"><i data-lucide="award"></i></div>
+                    <div>
+                        <div class="stat-num-row">
+                            <h3 class="stat-number">100<span class="stat-plus">%</span></h3>
+                        </div>
+                        <p class="stat-name">Client Satisfaction</p>
+                        <span class="stat-muted-note">Zero Compromise on Quality</span>
+                    </div>
+                </div>
+
+                <div class="ref-stat-box glass-panel spotlight-card">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-stat-icon-wrap"><i data-lucide="code"></i></div>
+                    <div>
+                        <div class="stat-num-row">
+                            <h3 class="stat-number">1000<span class="stat-plus">+</span></h3>
+                        </div>
+                        <p class="stat-name">Hours of Craft</p>
+                        <span class="stat-muted-note">Modern, Clean Code</span>
+                    </div>
+                </div>
+
+                <div class="ref-stat-box glass-panel spotlight-card">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-stat-icon-wrap"><i data-lucide="clock"></i></div>
+                    <div>
+                        <div class="stat-num-row">
+                            <h3 id="liveClock" class="clock-display">--:--:--</h3>
+                        </div>
+                        <p class="stat-name">Local Time (IST)</p>
+                        <span class="stat-muted-note"><span class="tz-beacon"></span> New Delhi / Worldwide</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PHILOSOPHY SECTION (Editorial Layout with Personal Image & Code Editor) -->
+        <section id="about" class="ref-about-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> PHILOSOPHY</div>
+                <h2 class="ref-section-title">Architecting with <span class="highlight-orange">Vision & Rigor</span>
+                </h2>
+                <p class="ref-section-sub">Engineered for Velocity, Crafted to Convert</p>
+            </div>
+
+            <!-- Asymmetric Editorial Grid: Philosophy Text + Personal Image -->
+            <div class="ref-philosophy-editorial">
+                <!-- Left: Editorial Content & Features -->
+                <div class="ref-philosophy-content">
+                    <p class="ref-editorial-lead">
+                        I don't build generic cookie-cutter websites. Every line of code I craft is designed to elevate
+                        brand authority, captivate visitors, and convert traffic into measurable business growth.
+                    </p>
+                    <p class="ref-editorial-secondary">
+                        With a multidisciplinary foundation across <strong>Full-Stack Web Development</strong>,
+                        <strong>Python Automation</strong>, and <strong>Conversion SEO</strong>, I engineer digital
+                        assets that scale effortlessly.
+                    </p>
+
+                    <!-- Two Distinct Feature Cards -->
+                    <div class="ref-feature-cards-grid">
+                        <div class="ref-feature-card glass-panel spotlight-card" data-sound="hover">
+                            <div class="feature-card-header">
+                                <div class="feature-icon-squircle"><i data-lucide="layout"></i></div>
+                                <span class="feature-tag">FEATURE 01</span>
+                            </div>
+                            <h3 class="feature-title">Bespoke Custom UI</h3>
+                            <p class="feature-desc">Tailored component systems built from scratch without bloated
+                                templates.</p>
+                        </div>
+
+                        <div class="ref-feature-card glass-panel spotlight-card" data-sound="hover">
+                            <div class="feature-card-header">
+                                <div class="feature-icon-squircle"><i data-lucide="gauge"></i></div>
+                                <span class="feature-tag">FEATURE 02</span>
+                            </div>
+                            <h3 class="feature-title">Sub-Second Core Web Vitals</h3>
+                            <p class="feature-desc">Strict asset optimization guaranteeing 99+ Google Lighthouse scores.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Natural Personal Image Card (IMG_1485.PNG) -->
+                <div class="ref-personal-image-card glass-panel spotlight-card">
+                    <div class="personal-img-inner">
+                        <img src="assets/IMG_1485.PNG" alt="Aditya (Dito) - Full-Stack Architect & Web Developer"
+                            class="natural-personal-img" loading="lazy">
+                        <div class="personal-badge-pill">
+                            <span class="cyan-micro-bar"></span>
+                            <span>Full-Stack Architect • Craft & Discipline</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SERVICES PREVIEW SECTION (Matching Reference 6 Verticals) -->
+        <section id="services" class="ref-services-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> WHAT I DO</div>
+                <h2 class="ref-section-title">Core <span class="highlight-orange">Services</span></h2>
+                <p class="ref-section-sub">Comprehensive digital solutions engineered for modern growth.</p>
+            </div>
+
+            <div class="ref-grid-3">
+                <!-- Service 1: Web Development -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle"><i data-lucide="code-2"></i></div>
+                        <span class="ref-tag-pill">ENGINEERING</span>
+                    </div>
+                    <h3 class="ref-card-title">Web Development</h3>
+                    <p class="ref-card-desc">Bespoke full-stack web applications built with modern architectures (React,
+                        Next.js, Node.js) prioritizing sub-second speeds and clean code.</p>
+                    <a href="services.html" class="ref-card-link" data-sound="click">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 2: UI/UX Design -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle"><i data-lucide="figma"></i></div>
+                        <span class="ref-tag-pill">CREATIVE UI</span>
+                    </div>
+                    <h3 class="ref-card-title">UI/UX Design</h3>
+                    <p class="ref-card-desc">Intuitive, high-converting digital user interfaces designed with deep user
+                        psychology, dark-mode aesthetics, and modern design systems.</p>
+                    <a href="services.html" class="ref-card-link" data-sound="click">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 3: Python Programming -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle"><i data-lucide="terminal"></i></div>
+                        <span class="ref-tag-pill">AUTOMATION</span>
+                    </div>
+                    <h3 class="ref-card-title">Python Programming</h3>
+                    <p class="ref-card-desc">Custom automation pipelines, high-volume intelligent web scrapers, data
+                        processing utilities, and backend microservices.</p>
+                    <a href="services.html" class="ref-card-link" data-sound="click">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 4: SEO Optimization -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle"><i data-lucide="gauge"></i></div>
+                        <span class="ref-tag-pill">DISCOVERABILITY</span>
+                    </div>
+                    <h3 class="ref-card-title">SEO Optimization</h3>
+                    <p class="ref-card-desc">Data-driven technical SEO ensuring your site scores 100 on Google
+                        Lighthouse and ranks prominently for targeted business keywords.</p>
+                    <a href="services.html" class="ref-card-link" data-sound="click">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 5: Digital Marketing -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle"><i data-lucide="trending-up"></i></div>
+                        <span class="ref-tag-pill">GROWTH</span>
+                    </div>
+                    <h3 class="ref-card-title">Digital Marketing</h3>
+                    <p class="ref-card-desc">Performance-driven conversion funnels, landing page optimization (CRO),
+                        analytics telemetry, and campaign lead generation.</p>
+                    <a href="services.html" class="ref-card-link" data-sound="click">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Service 6: Fitness Coaching -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle"><i data-lucide="activity"></i></div>
+                        <span class="ref-tag-pill">PERFORMANCE</span>
+                    </div>
+                    <h3 class="ref-card-title">Fitness Coaching</h3>
+                    <p class="ref-card-desc">A disciplined, systematic approach to physical endurance, strength
+                        training, and mental stamina tailored for high-performing professionals.</p>
+                    <a href="services.html" class="ref-card-link" data-sound="click">
+                        <span>Learn More</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Explore Dedicated Services Page Button -->
+            <div style="text-align: center; margin-top: 3.5rem;">
+                <a href="services.html" class="btn-ref-primary" data-sound="click">
+                    <span>Explore Full Services & 5-Step Process</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- 5. INTERACTIVE PROJECT ESTIMATOR -->
+        <section id="estimator" class="ref-estimator-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> TRANSPARENT PRICING</div>
+                <h2 class="ref-section-title">Interactive <span class="highlight-orange">Project Estimator</span></h2>
+                <p class="ref-section-sub">Configure your project requirements to calculate a real-time estimated
+                    investment and development timeline.</p>
+            </div>
+
+            <div class="estimator-container glass-panel spotlight-card">
+                <div class="estimator-grid">
+                    <!-- Left: Configuration Controls -->
+                    <div class="estimator-controls">
+                        <!-- Step 1: Project Type -->
+                        <div class="control-group">
+                            <label class="control-label"><span class="step-num">1</span> Select Project Vertical</label>
+                            <div class="type-selector-grid">
+                                <label class="type-card active">
+                                    <input type="radio" name="projectType" value="landing" checked>
+                                    <i data-lucide="globe"></i>
+                                    <span class="type-name">Landing Page</span>
+                                    <span class="type-desc">Single conversion-focused page</span>
+                                </label>
+                                <label class="type-card">
+                                    <input type="radio" name="projectType" value="website">
+                                    <i data-lucide="monitor"></i>
+                                    <span class="type-name">Multi-Page Website</span>
+                                    <span class="type-desc">Complete business website</span>
+                                </label>
+                                <label class="type-card">
+                                    <input type="radio" name="projectType" value="ecommerce">
+                                    <i data-lucide="shopping-bag"></i>
+                                    <span class="type-name">E-Commerce</span>
+                                    <span class="type-desc">Online store, products & payments</span>
+                                </label>
+                                <label class="type-card">
+                                    <input type="radio" name="projectType" value="saas">
+                                    <i data-lucide="cpu"></i>
+                                    <span class="type-name">Custom SaaS / Web App</span>
+                                    <span class="type-desc">Complex web application or platform</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: Page Count Slider -->
+                        <div class="control-group">
+                            <div class="slider-header">
+                                <label class="control-label"><span class="step-num">2</span> Scope & Page Volume</label>
+                                <span class="slider-value-badge" id="pageCountBadge">1–3 Pages</span>
+                            </div>
+                            <input type="range" id="pageRange" min="1" max="4" value="1" step="1" class="custom-slider"
+                                aria-label="Scope & Page Volume">
+                            <div class="slider-ticks">
+                                <span>1–3 Pages<br><small>₹5,000 – ₹15,000</small></span>
+                                <span>4–7 Pages<br><small>₹15,000 – ₹30,000</small></span>
+                                <span>8–14 Pages<br><small>₹30,000 – ₹50,000</small></span>
+                                <span>15+ Pages<br><small>₹50,000+</small></span>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Add-on Capabilities -->
+                        <div class="control-group">
+                            <label class="control-label"><span class="step-num">3</span> Premium Add-Ons</label>
+                            <div class="addons-grid">
+                                <label class="addon-checkbox">
+                                    <input type="checkbox" id="addonSeo">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="addon-text">
+                                        <strong>Full SEO Mastery</strong>
+                                        <span>Schema, technical SEO, speed optimization, sitemap (+₹10,000)</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-checkbox">
+                                    <input type="checkbox" id="addonMotion">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="addon-text">
+                                        <strong>Luxury Motion & 3D</strong>
+                                        <span>Custom animations, interactive effects & advanced motion (+₹20,000)</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-checkbox">
+                                    <input type="checkbox" id="addonCms">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="addon-text">
+                                        <strong>Headless CMS</strong>
+                                        <span>Sanity / Strapi with client-editable content (+₹15,000)</span>
+                                    </div>
+                                </label>
+
+                                <label class="addon-checkbox">
+                                    <input type="checkbox" id="addonExpress">
+                                    <span class="checkbox-custom"></span>
+                                    <div class="addon-text">
+                                        <strong>Express Sprint Delivery</strong>
+                                        <span>Priority 7–10 day development (+₹10,000)</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Dynamic Calculation Summary Card -->
+                    <div class="estimator-summary glass-panel">
+                        <div class="summary-top">
+                            <span class="summary-tag"><i data-lucide="zap"></i> LIVE QUOTE ESTIMATE</span>
+                            <div class="price-display">
+                                <span class="currency">₹</span>
+                                <h3 class="estimated-price" id="estimatedPrice">5,000</h3>
+                                <span class="price-suffix">INR</span>
+                            </div>
+                            <p class="price-subtext">Estimated investment for production-ready deployment.</p>
+                        </div>
+
+                        <div class="summary-specs">
+                            <div class="spec-row">
+                                <span class="spec-label"><i data-lucide="clock"></i> Est. Timeline:</span>
+                                <span class="spec-value" id="estimatedTime">3 – 5 Days</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label"><i data-lucide="cpu"></i> Architecture:</span>
+                                <span class="spec-value" id="estimatedArch">Next.js / React / Optimized Frontend</span>
+                            </div>
+                            <div class="spec-row">
+                                <span class="spec-label"><i data-lucide="shield"></i> Included Warranty:</span>
+                                <span class="spec-value">30 Days Post-Launch Support</span>
+                            </div>
+                        </div>
+
+                        <button id="bookEstimatedBtn" class="btn-ref-primary w-100 btn-glow" data-sound="click">
+                            <span>Start Your Project</span>
+                            <i data-lucide="arrow-up-right"></i>
+                        </button>
+                        <p class="summary-note"><i data-lucide="info"></i> Pre-fills your contact inquiry with your
+                            selected project requirements. No commitment required.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. TECHNICAL ARSENAL / SKILLS SECTION -->
+        <section id="skills" class="ref-skills-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> TECHNICAL ARSENAL</div>
+                <h2 class="ref-section-title">Mastered <span class="highlight-orange">Technologies</span></h2>
+                <p class="ref-section-sub">Tools, frameworks, and engineering standards utilized to construct modern web
+                    infrastructure.</p>
+            </div>
+
+            <div class="arsenal-tabs">
+                <button class="arsenal-tab-btn active" data-tab="all">All Stack</button>
+                <button class="arsenal-tab-btn" data-tab="frontend">Frontend</button>
+                <button class="arsenal-tab-btn" data-tab="backend">Backend & Data</button>
+                <button class="arsenal-tab-btn" data-tab="design">UI/UX & Creative</button>
+            </div>
+
+            <div class="arsenal-grid">
+                <!-- Frontend -->
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="frontend">
+                    <div class="arsenal-icon-wrap"><i data-lucide="code-2"></i></div>
+                    <h4>React / Next.js</h4>
+                    <p>SSR, SSG, Server Components & App Router mastery</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="frontend">
+                    <div class="arsenal-icon-wrap"><i data-lucide="file-code"></i></div>
+                    <h4>TypeScript / JavaScript</h4>
+                    <p>Type-safe architectures, modern ESNext features & DOM performance</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="frontend">
+                    <div class="arsenal-icon-wrap"><i data-lucide="palette"></i></div>
+                    <h4>Tailwind & Modern CSS</h4>
+                    <p>Fluid responsive design, custom animation keyframes, Glassmorphism</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <!-- Backend -->
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="backend">
+                    <div class="arsenal-icon-wrap"><i data-lucide="server"></i></div>
+                    <h4>Node.js & Express</h4>
+                    <p>RESTful APIs, middleware architecture, JWT authentication</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 88%;"></div>
+                    </div>
+                </div>
+
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="backend">
+                    <div class="arsenal-icon-wrap"><i data-lucide="terminal"></i></div>
+                    <h4>Python & Automation</h4>
+                    <p>FastAPI, automated scrapers, data processing pipelines</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="backend">
+                    <div class="arsenal-icon-wrap"><i data-lucide="database"></i></div>
+                    <h4>Databases & Cloud</h4>
+                    <p>PostgreSQL, MongoDB, Supabase, Firebase & GCP</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 82%;"></div>
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="design">
+                    <div class="arsenal-icon-wrap"><i data-lucide="figma"></i></div>
+                    <h4>Figma & Prototyping</h4>
+                    <p>Component design systems, wireframing & high-fidelity UI</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 92%;"></div>
+                    </div>
+                </div>
+
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="design">
+                    <div class="arsenal-icon-wrap"><i data-lucide="sparkles"></i></div>
+                    <h4>WebGL & HTML Canvas</h4>
+                    <p>Interactive particles, audio reactive visuals, shaders</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 84%;"></div>
+                    </div>
+                </div>
+
+                <div class="arsenal-card glass-panel spotlight-card" data-cat="design">
+                    <div class="arsenal-icon-wrap"><i data-lucide="gauge"></i></div>
+                    <h4>SEO & Core Web Vitals</h4>
+                    <p>Lighthouse 100 audits, schema injection, lazy loading</p>
+                    <div class="skill-bar">
+                        <div class="skill-fill" style="width: 96%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. CONTACT SECTION -->
+        <section id="contact" class="ref-contact-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> INITIALIZE CONNECTION</div>
+                <h2 class="ref-section-title">Let's Build Something <span class="highlight-orange">Extraordinary</span>
+                </h2>
+                <p class="ref-section-sub">Have a visionary project in mind? Reach out to start your build or schedule a
+                    strategy consultation.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <!-- Form -->
+                <form id="contactForm" class="contact-form glass-panel spotlight-card" novalidate>
+                    <!-- Interactive Estimator Preview Banner -->
+                    <div class="estimator-specs-preview" id="estimatorSpecsPreview">
+                        <div class="esp-header">
+                            <div class="esp-tag">
+                                <i data-lucide="sliders" class="esp-icon"></i>
+                                <span>CONFIGURED PROJECT SPECS</span>
+                            </div>
+                            <a href="#estimator" class="esp-edit-btn" id="editEstimatorBtn"
+                                title="Modify your estimator configuration">
+                                <i data-lucide="edit-3"></i>
+                                <span>Modify</span>
+                            </a>
+                        </div>
+                        <div class="esp-chips">
+                            <div class="esp-chip highlight">
+                                <span class="esp-chip-label">Investment</span>
+                                <span class="esp-chip-val" id="previewPrice">₹5,000 INR</span>
+                            </div>
+                            <div class="esp-chip">
+                                <span class="esp-chip-label">Timeline</span>
+                                <span class="esp-chip-val" id="previewTime">3 – 5 Days</span>
+                            </div>
+                            <div class="esp-chip">
+                                <span class="esp-chip-label">Scope</span>
+                                <span class="esp-chip-val" id="previewPages">1–3 Pages</span>
+                            </div>
+                            <div class="esp-chip">
+                                <span class="esp-chip-label">Architecture</span>
+                                <span class="esp-chip-val" id="previewArch">Next.js / React</span>
+                            </div>
+                        </div>
+                        <div class="esp-addons" id="previewAddonsRow">
+                            <span class="esp-addon-label">Add-ons:</span>
+                            <span class="esp-addon-list" id="previewAddons">Standard Build (No Add-ons)</span>
+                        </div>
+                    </div>
+
+                    <!-- Hidden Estimator Payload Fields -->
+                    <input type="hidden" id="inqProjectType" name="inqProjectType"
+                        value="Landing Page & High-Conversion Funnel">
+                    <input type="hidden" id="inqPages" name="inqPages" value="1–3 Pages">
+                    <input type="hidden" id="inqAddons" name="inqAddons" value="None">
+                    <input type="hidden" id="inqPrice" name="inqPrice" value="₹5,000 INR">
+                    <input type="hidden" id="inqTime" name="inqTime" value="3 – 5 Days">
+                    <input type="hidden" id="inqArch" name="inqArch" value="Next.js / React / Optimized Frontend">
+
+                    <!-- Anti-Spam Honeypot (Hidden from human visitors, traps bots) -->
+                    <div class="hp-trap" aria-hidden="true">
+                        <label for="website_hp">Leave this field empty</label>
+                        <input type="text" id="website_hp" name="website_hp" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <!-- Client Details: Name & Email (Required) -->
+                    <div class="form-row-2">
+                        <div class="input-field" id="fieldWrapName">
+                            <input type="text" id="senderName" required placeholder=" " autocomplete="name">
+                            <label for="senderName">Your Name *</label>
+                            <span class="focus-border"></span>
+                            <div class="field-error" id="nameError">Please enter your full name (minimum 2 characters).
+                            </div>
+                        </div>
+                        <div class="input-field" id="fieldWrapEmail">
+                            <input type="email" id="senderEmail" required placeholder=" " autocomplete="email">
+                            <label for="senderEmail">Email Address *</label>
+                            <span class="focus-border"></span>
+                            <div class="field-error" id="emailError">Please enter a valid email address.</div>
+                        </div>
+                    </div>
+
+                    <!-- Optional Details: Phone & Company -->
+                    <div class="form-row-2">
+                        <div class="input-field" id="fieldWrapPhone">
+                            <input type="tel" id="senderPhone" placeholder=" " autocomplete="tel">
+                            <label for="senderPhone">Phone / WhatsApp Number (optional)</label>
+                            <span class="focus-border"></span>
+                            <div class="field-error" id="phoneError">Please enter a valid phone number.</div>
+                        </div>
+                        <div class="input-field" id="fieldWrapCompany">
+                            <input type="text" id="senderCompany" placeholder=" " autocomplete="organization">
+                            <label for="senderCompany">Company / Brand (optional)</label>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+
+                    <!-- Project Type Selection -->
+                    <div class="input-field" id="fieldWrapProject">
+                        <label class="static-field-label" for="projectVerticalSelect">Project Type *</label>
+                        <select id="projectVerticalSelect" class="custom-select">
+                            <option value="Landing Page & High-Conversion Funnel">Landing Page & High-Conversion Funnel
+                            </option>
+                            <option value="Custom Business Website">Custom Business Website</option>
+                            <option value="E-Commerce & Online Store">E-Commerce & Online Store</option>
+                            <option value="Full-Stack Web Application / SaaS">Full-Stack Web Application / SaaS</option>
+                            <option value="Personal Brand & Portfolio">Personal Brand & Portfolio</option>
+                            <option value="Other Tailored Digital Solution">Other Tailored Digital Solution</option>
+                        </select>
+                        <div class="field-error" id="projectError">Please select a project type.</div>
+                    </div>
+
+                    <!-- Client Message & Requirements -->
+                    <div class="input-field" id="fieldWrapMessage">
+                        <textarea id="messageContent" rows="5" maxlength="1000" required placeholder=" "></textarea>
+                        <label for="messageContent">Client Message / Project Requirements *</label>
+                        <span class="focus-border"></span>
+                        <div class="field-footer-row">
+                            <div class="field-error" id="messageError">Please share your project requirements (minimum
+                                10 characters).</div>
+                            <div class="char-counter"><span id="charCount">0</span> / 1000 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions-dual">
+                        <button type="submit" class="btn-ref-primary btn-glow submit-btn" id="submitBtn"
+                            data-sound="click">
+                            <span class="btn-text">Send via Email (ditowebdesign@gmail.com)</span>
+                            <i data-lucide="mail" class="btn-icon"></i>
+                        </button>
+                        <button type="button" class="btn-whatsapp-inquiry" id="whatsappInquiryBtn" data-sound="click"
+                            title="Send details directly to Aditya on WhatsApp">
+                            <i data-lucide="message-circle" class="wa-btn-icon"></i>
+                            <span>Send to WhatsApp (+91 6363561751)</span>
+                        </button>
+                    </div>
+
+                    <div class="form-feedback" id="formStatus" role="alert" aria-live="polite"></div>
+                </form>
+
+                <!-- Clean Confirmation / Success Screen -->
+                <div id="inquirySuccessScreen" class="inquiry-success-screen glass-panel spotlight-card"
+                    style="display: none;">
+                    <div class="success-icon-wrap">
+                        <i data-lucide="check-circle-2" class="success-icon"></i>
+                    </div>
+                    <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> TRANSMISSION CONFIRMED</div>
+                    <h3 class="success-title">Message Sent Successfully</h3>
+                    <p class="success-desc">Thank you for reaching out! Your project inquiry and specifications have
+                        been transmitted to <b class="highlight-cyan">ditowebdesign@gmail.com</b>. I will review your
+                        requirements and respond within 24 hours with next steps.</p>
+
+                    <!-- Fast-Track WhatsApp Dispatch Card -->
+                    <div class="instant-whatsapp-callout">
+                        <div class="iwc-left">
+                            <div class="iwc-icon-wrap">
+                                <i data-lucide="message-circle"></i>
+                            </div>
+                            <div class="iwc-content">
+                                <h4>Want an Instant 10-Minute Response?</h4>
+                                <p>Forward these exact project specifications directly to Aditya on WhatsApp at <b>+91
+                                        6363561751</b>.</p>
+                            </div>
+                        </div>
+                        <a id="confirmWhatsappLink" href="https://wa.me/916363561751" target="_blank"
+                            rel="noopener noreferrer" class="btn-whatsapp-forward" data-sound="click">
+                            <i data-lucide="send"></i>
+                            <span>Open WhatsApp (+91 6363561751)</span>
+                        </a>
+                    </div>
+
+                    <div class="success-summary-card">
+                        <div class="summary-card-header">
+                            <i data-lucide="file-check"></i>
+                            <span>Inquiry Summary</span>
+                        </div>
+                        <div class="summary-card-grid">
+                            <div class="sc-item">
+                                <span class="sc-label">Project Type</span>
+                                <span class="sc-val" id="scProjectType">Landing Page & High-Conversion Funnel</span>
+                            </div>
+                            <div class="sc-item">
+                                <span class="sc-label">Est. Investment</span>
+                                <span class="sc-val sc-highlight" id="scInvestment">₹5,000 INR</span>
+                            </div>
+                            <div class="sc-item">
+                                <span class="sc-label">Est. Timeline</span>
+                                <span class="sc-val" id="scTimeline">3 – 5 Days</span>
+                            </div>
+                            <div class="sc-item">
+                                <span class="sc-label">Client Name</span>
+                                <span class="sc-val" id="scClientName">-</span>
+                            </div>
+                            <div class="sc-item">
+                                <span class="sc-label">Email</span>
+                                <span class="sc-val" id="scClientEmail">-</span>
+                            </div>
+                            <div class="sc-item">
+                                <span class="sc-label">Architecture</span>
+                                <span class="sc-val" id="scArchitecture">Next.js / React</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="success-actions">
+                        <button type="button" id="sendAnotherBtn" class="btn-ref-secondary" data-sound="click">
+                            <i data-lucide="rotate-ccw"></i>
+                            <span>Send Another Inquiry</span>
+                        </button>
+                        <a href="#projects" class="btn-ref-primary" data-sound="click">
+                            <span>Explore Portfolio</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Direct Contact Sidebar -->
+                <div class="contact-sidebar glass-panel spotlight-card">
+                    <div class="sidebar-top">
+                        <div class="status-chip">
+                            <span class="chip-dot"></span>
+                            <span>Accepting New Projects</span>
+                        </div>
+                        <h3>Direct Transmission</h3>
+                        <p>Prefer direct communication? Drop an email or message on WhatsApp for rapid 24-hour response.
+                        </p>
+                    </div>
+
+                    <div class="direct-channels">
+                        <div class="channel-card copyable" id="copyEmailCard" title="Click to copy email address">
+                            <div class="channel-icon"><i data-lucide="mail"></i></div>
+                            <div class="channel-text">
+                                <span class="ch-label">EMAIL ADDRESS</span>
+                                <span class="ch-val" id="directEmailText">ditowebdesign@gmail.com</span>
+                            </div>
+                            <i data-lucide="copy" class="copy-hint-icon"></i>
+                        </div>
+
+                        <a href="https://wa.me/916363561751?text=Hi%20Aditya%2C%20I%20would%20like%20to%20discuss%20a%20project"
+                            target="_blank" rel="noopener noreferrer" class="channel-card" title="Chat on WhatsApp">
+                            <div class="channel-icon"><i data-lucide="message-circle"></i></div>
+                            <div class="channel-text">
+                                <span class="ch-label">WHATSAPP DIRECT</span>
+                                <span class="ch-val">+91 6363561751</span>
+                            </div>
+                            <i data-lucide="arrow-up-right" class="external-hint-icon"></i>
+                        </a>
+                    </div>
+
+                    <div class="social-channels">
+                        <span class="social-label">NETWORK & PROFILES:</span>
+                        <div class="social-btn-row">
+                            <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                                class="social-icon-link" aria-label="GitHub">
+                                <i data-lucide="github"></i>
+                            </a>
+                            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
+                                class="social-icon-link" aria-label="LinkedIn">
+                                <i data-lucide="linkedin"></i>
+                            </a>
+                            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
+                                class="social-icon-link" aria-label="Twitter / X">
+                                <i data-lucide="twitter"></i>
+                            </a>
+                            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                                class="social-icon-link" aria-label="Instagram">
+                                <i data-lucide="instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Matching Dito. Aesthetic) -->
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="ref-logo">Dito<span class="orange-dot">.</span></div>
+                    <p>Modern websites, web applications, and digital experiences that help businesses grow online.</p>
+                </div>
+                <div class="footer-links-group">
+                    <span class="f-group-title">Navigation</span>
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="#estimator">Cost Estimator</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-links-group">
+                    <span class="f-group-title">Direct Reach</span>
+                    <a href="mailto:ditowebdesign@gmail.com">ditowebdesign@gmail.com</a>
+                    <a href="https://wa.me/916363561751" target="_blank" rel="noopener noreferrer">+91 6363561751
+                        (WhatsApp)</a>
+                </div>
+                <div class="footer-links-group">
+                    <span class="f-group-title">Services</span>
+                    <a href="services.html#services-grid">Web Development</a>
+                    <a href="services.html#services-grid">UI/UX Design</a>
+                    <a href="services.html#services-grid">Python Programming</a>
+                    <a href="services.html#services-grid">SEO Optimization</a>
+                    <a href="services.html#services-grid">Digital Marketing</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya (Dito Web Design). All rights reserved.</p>
+                <div class="footer-badge">
+                    <span>Designed with passion & precision</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Cyber HUD Command Palette Modal (Ctrl+K) -->
+    <div class="hud-backdrop" id="hudBackdrop">
+        <div class="hud-window glass-panel" id="hudWindow">
+            <div class="hud-title-bar">
+                <div class="hud-term-title">
+                    <i data-lucide="terminal" class="hud-term-icon"></i>
+                    <span>DITO // CYBERNETIC COMMAND TERMINAL</span>
+                </div>
+                <button class="hud-close-btn" id="hudCloseBtn" aria-label="Close terminal"><i
+                        data-lucide="x"></i></button>
+            </div>
+
+            <div class="hud-input-row">
+                <span class="hud-prompt">dito@core:~$</span>
+                <input type="text" id="hudCommandInput"
+                    placeholder="Type a command or help (e.g. 'skills', 'theme', 'quote', 'matrix')..."
+                    autocomplete="off" spellcheck="false">
+                <button id="hudRunBtn" class="hud-run-btn">EXEC</button>
+            </div>
+
+            <div class="hud-output" id="hudOutput">
+                <p class="hud-system-msg"><span class="accent-text">System Ready.</span> Press [TAB] or click hints
+                    below to execute commands.</p>
+            </div>
+
+            <div class="hud-quick-hints">
+                <button class="hint-tag" data-cmd="services">services</button>
+                <button class="hint-tag" data-cmd="skills">skills</button>
+                <button class="hint-tag" data-cmd="quote">quote</button>
+                <button class="hint-tag" data-cmd="theme">theme</button>
+                <button class="hint-tag" data-cmd="contact">contact</button>
+                <button class="hint-tag" data-cmd="matrix">matrix</button>
+                <button class="hint-tag" data-cmd="clear">clear</button>
+                <button class="hint-tag" data-cmd="help">help</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons on load
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
