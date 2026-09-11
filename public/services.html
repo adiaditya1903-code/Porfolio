@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="amber-sunset">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Solutions | Dito.</title>
+    <meta name="description" content="Explore tailored digital services by Aditya (Dito) — Web Development, UI/UX Design, Python Programming, SEO Optimization, Digital Marketing, and Fitness Coaching.">
+    <meta name="keywords" content="Web Development, UI/UX Design, Python Programming, SEO Optimization, Digital Marketing, Fitness Coaching, Aditya, Dito">
+    
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Services & Solutions | Dito.">
+    <meta property="og:description" content="Crafting high-impact web applications, tailored digital solutions, and scalable architectures.">
+    <meta property="og:image" content="assets/IMG_1485.PNG">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="ref-body">
+    <!-- Background Canvas for Particles / Matrix Rain -->
+    <canvas id="particleCanvas"></canvas>
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <!-- Header Navigation (Matching Dito. Pill Header) -->
+    <header class="ref-header" id="mainHeader">
+        <div class="ref-header-container">
+            <a href="index.html" class="ref-logo">
+                <span class="logo-name">Dito<span class="orange-dot">.</span></span>
+            </a>
+
+            <nav class="ref-nav-pill">
+                <ul class="ref-nav-links">
+                    <li><a href="index.html" class="ref-nav-item">Home</a></li>
+                    <li><a href="index.html#about" class="ref-nav-item">About</a></li>
+                    <li><a href="services.html" class="ref-nav-item active">Services</a></li>
+                    <li><a href="index.html#estimator" class="ref-nav-item">Cost Estimator</a></li>
+                    <li><a href="index.html#skills" class="ref-nav-item">Skills</a></li>
+                    <li><a href="index.html#contact" class="ref-nav-item">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="ref-header-actions">
+                <!-- Theme Switcher Button -->
+                <div class="theme-switcher-wrapper">
+                    <button id="themeToggleBtn" class="ref-icon-btn" title="Cycle Color Theme" aria-label="Cycle Color Theme">
+                        <i data-lucide="palette"></i>
+                    </button>
+                    <div class="theme-menu" id="themeMenu">
+                        <button data-set-theme="amber-sunset" class="theme-opt active"><span class="color-dot amber"></span> Amber Sunset</button>
+                        <button data-set-theme="cyber-cyan" class="theme-opt"><span class="color-dot cyan"></span> Cyber Cyan</button>
+                        <button data-set-theme="hyper-violet" class="theme-opt"><span class="color-dot violet"></span> Hyper Violet</button>
+                        <button data-set-theme="matrix-emerald" class="theme-opt"><span class="color-dot matrix"></span> Matrix Green</button>
+                    </div>
+                </div>
+
+                <!-- Audio SFX Toggle Button -->
+                <button id="audioToggleBtn" class="ref-icon-btn audio-btn" title="Toggle UI Sound Effects" aria-label="Toggle Sound Effects">
+                    <div class="sound-wave">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <i data-lucide="volume-x" id="audioIcon"></i>
+                </button>
+
+                <!-- Command HUD Trigger -->
+                <button id="hudOpenBtn" class="ref-icon-btn ref-hud-btn" title="Open Terminal (Ctrl + K)">
+                    <i data-lucide="terminal"></i>
+                </button>
+
+                <!-- Primary Action Button -->
+                <a href="index.html#contact" class="btn-ref-primary btn-nav-cta">
+                    <span>Let's Talk</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+
+                <!-- Mobile Hamburger Button -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Mobile Navigation">
+                    <span class="bar bar-1"></span>
+                    <span class="bar bar-2"></span>
+                    <span class="bar bar-3"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+        <div class="drawer-backdrop" id="drawerBackdrop"></div>
+        <div class="drawer-content glass-panel">
+            <div class="drawer-top">
+                <div class="ref-logo">Dito<span class="orange-dot">.</span></div>
+                <button class="drawer-close-btn" id="drawerCloseBtn"><i data-lucide="x"></i></button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html" class="mobile-link"><i data-lucide="home"></i> Home</a></li>
+                <li><a href="index.html#about" class="mobile-link"><i data-lucide="user"></i> About</a></li>
+                <li><a href="services.html" class="mobile-link active"><i data-lucide="layout-grid"></i> Services</a></li>
+                <li><a href="#services-grid" class="mobile-link"><i data-lucide="cpu"></i> All Verticals</a></li>
+                <li><a href="#process" class="mobile-link"><i data-lucide="workflow"></i> 5-Step Process</a></li>
+                <li><a href="index.html#estimator" class="mobile-link"><i data-lucide="calculator"></i> Cost Estimator</a></li>
+                <li><a href="index.html#contact" class="mobile-link"><i data-lucide="mail"></i> Contact</a></li>
+            </ul>
+            <div class="drawer-footer">
+                <a href="index.html#contact" class="btn-ref-primary w-100 mobile-cta-btn">
+                    <span>Start a Project</span>
+                    <i data-lucide="arrow-up-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- 1. HERO SECTION (Matching Reference Visual Language) -->
+        <section id="services-hero" class="ref-hero-section">
+            <!-- Background Large Ghost Typography Watermark -->
+            <div class="ref-watermark-text" aria-hidden="true">DEVELOPER SERVICES</div>
+
+            <div class="ref-hero-wrapper">
+                <!-- Top Floating Pill Badge with Cyan Micro-Bar -->
+                <div class="ref-pill-badge-top" data-sound="hover">
+                    <span class="cyan-micro-bar"></span>
+                    <span class="badge-content"><i data-lucide="sparkles" class="badge-sparkle"></i> Tailored Digital Solutions</span>
+                </div>
+
+                <!-- Main Bold Title -->
+                <h1 class="ref-hero-heading">
+                    Crafting <span class="highlight-orange">High-Impact</span><br>
+                    Digital Experiences
+                </h1>
+
+                <!-- Concise Value Proposition -->
+                <p class="ref-hero-subtext">
+                    I build modern websites, web applications, and digital experiences that help businesses grow online — combining mathematical code structure with high-converting visual design.
+                </p>
+
+                <!-- Dual Action Buttons -->
+                <div class="ref-hero-buttons">
+                    <a href="index.html#contact" class="btn-ref-primary" data-sound="click">
+                        <span>Get Started</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                    <a href="#process" class="btn-ref-secondary" data-sound="click">
+                        <span>View Workflow</span>
+                        <i data-lucide="workflow"></i>
+                    </a>
+                    <a href="index.html#estimator" class="btn-ref-secondary" data-sound="click">
+                        <span>Cost Estimator</span>
+                        <i data-lucide="calculator"></i>
+                    </a>
+                </div>
+
+                <!-- Bottom Floating Experience Card (Matching Screenshot Bottom-Left Card) -->
+                <div class="ref-exp-card glass-panel" data-sound="hover">
+                    <div class="exp-stars">
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                        <i data-lucide="star"></i>
+                    </div>
+                    <span class="exp-text">3+ Years Experience • 100% Quality</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SERVICES GRID (Exact 6 Verticals from Reference Pills) -->
+        <section id="services-grid" class="ref-services-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> WHAT I OFFER</div>
+                <h2 class="ref-section-title">Specialized <span class="highlight-orange">Services</span></h2>
+                <p class="ref-section-sub">Comprehensive digital engineering designed to scale your business, brand authority, and physical stamina.</p>
+            </div>
+
+            <div class="ref-grid-3">
+                <!-- Card 1: Web Development -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <span class="ref-tag-pill">ENGINEERING</span>
+                    </div>
+                    <h3 class="ref-card-title">Web Development</h3>
+                    <p class="ref-card-desc">
+                        Bespoke full-stack web applications built with modern architectures (React, Next.js, Node.js) prioritizing sub-second load times, clean code, and zero bloated templates.
+                    </p>
+                    <ul class="ref-feature-bullets">
+                        <li><i data-lucide="check"></i> Next.js 14 SSR & Server Components</li>
+                        <li><i data-lucide="check"></i> REST & GraphQL API Integration</li>
+                        <li><i data-lucide="check"></i> Sub-second Core Web Vitals optimization</li>
+                    </ul>
+                    <a href="index.html#contact" class="ref-card-link" data-sound="click">
+                        <span>Commission Web Dev</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 2: UI/UX Design -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle">
+                            <i data-lucide="figma"></i>
+                        </div>
+                        <span class="ref-tag-pill">CREATIVE UI</span>
+                    </div>
+                    <h3 class="ref-card-title">UI/UX Design</h3>
+                    <p class="ref-card-desc">
+                        Intuitive, high-converting digital user interfaces designed with deep user psychology, sleek dark-mode aesthetics, custom typography, and accessible design systems.
+                    </p>
+                    <ul class="ref-feature-bullets">
+                        <li><i data-lucide="check"></i> Pixel-perfect Figma design systems</li>
+                        <li><i data-lucide="check"></i> Conversion-focused wireframes & user flows</li>
+                        <li><i data-lucide="check"></i> Interactive micro-interactions & prototyping</li>
+                    </ul>
+                    <a href="index.html#contact" class="ref-card-link" data-sound="click">
+                        <span>Commission UI/UX</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 3: Python Programming -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle">
+                            <i data-lucide="terminal"></i>
+                        </div>
+                        <span class="ref-tag-pill">AUTOMATION</span>
+                    </div>
+                    <h3 class="ref-card-title">Python Programming</h3>
+                    <p class="ref-card-desc">
+                        Custom automation pipelines, high-volume intelligent web scrapers, data processing utilities, and backend microservices engineered for rock-solid reliability.
+                    </p>
+                    <ul class="ref-feature-bullets">
+                        <li><i data-lucide="check"></i> FastAPI & Flask backend endpoints</li>
+                        <li><i data-lucide="check"></i> Headless browser web scraping scripts</li>
+                        <li><i data-lucide="check"></i> Workflow automation & scheduled cron bots</li>
+                    </ul>
+                    <a href="index.html#contact" class="ref-card-link" data-sound="click">
+                        <span>Commission Python</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 4: SEO Optimization -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle">
+                            <i data-lucide="gauge"></i>
+                        </div>
+                        <span class="ref-tag-pill">DISCOVERABILITY</span>
+                    </div>
+                    <h3 class="ref-card-title">SEO Optimization</h3>
+                    <p class="ref-card-desc">
+                        Data-driven technical search engine optimization ensuring your site scores 100 on Google Lighthouse, ranks prominently for targeted keywords, and converts organic searches.
+                    </p>
+                    <ul class="ref-feature-bullets">
+                        <li><i data-lucide="check"></i> Semantic JSON-LD schema markup injection</li>
+                        <li><i data-lucide="check"></i> 100 / 100 Core Web Vitals speed tuning</li>
+                        <li><i data-lucide="check"></i> Technical site indexing & sitemap generation</li>
+                    </ul>
+                    <a href="index.html#contact" class="ref-card-link" data-sound="click">
+                        <span>Commission SEO</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 5: Digital Marketing -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator cyan"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle">
+                            <i data-lucide="trending-up"></i>
+                        </div>
+                        <span class="ref-tag-pill">GROWTH</span>
+                    </div>
+                    <h3 class="ref-card-title">Digital Marketing</h3>
+                    <p class="ref-card-desc">
+                        Performance-driven conversion funnels, landing page conversion rate optimization (CRO), analytics telemetry, and campaign funnels engineered to capture qualified leads.
+                    </p>
+                    <ul class="ref-feature-bullets">
+                        <li><i data-lucide="check"></i> High-converting landing page architectures</li>
+                        <li><i data-lucide="check"></i> Meta & Google conversion pixel setups</li>
+                        <li><i data-lucide="check"></i> Funnel tracking & telemetry integration</li>
+                    </ul>
+                    <a href="index.html#contact" class="ref-card-link" data-sound="click">
+                        <span>Commission Marketing</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <!-- Card 6: Fitness Coaching -->
+                <div class="ref-service-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-card-indicator orange"></span>
+                    <div class="ref-card-header">
+                        <div class="ref-icon-squircle">
+                            <i data-lucide="activity"></i>
+                        </div>
+                        <span class="ref-tag-pill">PERFORMANCE</span>
+                    </div>
+                    <h3 class="ref-card-title">Fitness Coaching</h3>
+                    <p class="ref-card-desc">
+                        A disciplined, systematic approach to physical endurance, strength training, and mental stamina tailored for busy professionals who demand peak everyday execution.
+                    </p>
+                    <ul class="ref-feature-bullets">
+                        <li><i data-lucide="check"></i> Personalized strength & hypertrophy protocols</li>
+                        <li><i data-lucide="check"></i> Nutritional strategy & energy management</li>
+                        <li><i data-lucide="check"></i> Daily habit alignment & mental discipline</li>
+                    </ul>
+                    <a href="index.html#contact" class="ref-card-link" data-sound="click">
+                        <span>Inquire Coaching</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. PHILOSOPHY & CAPABILITIES SECTION (Using IMG_1485.PNG) -->
+        <section id="capabilities" class="ref-feature-split section-padding reveal">
+            <div class="ref-split-container">
+                <!-- Left: Philosophy & Value Features -->
+                <div class="ref-split-text">
+                    <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> PHILOSOPHY</div>
+                    <h2 class="ref-split-heading">
+                        Architecting with <span class="highlight-orange">Vision & Rigor</span>
+                    </h2>
+                    <p class="ref-split-sub">
+                        Engineered for Velocity, Crafted to Convert
+                    </p>
+
+                    <p class="ref-editorial-lead" style="margin-top: 1.5rem; margin-bottom: 1rem;">
+                        I don't build generic cookie-cutter websites. Every line of code I craft is designed to elevate brand authority, captivate visitors, and convert traffic into measurable business growth.
+                    </p>
+                    <p class="ref-editorial-secondary" style="margin-bottom: 2rem;">
+                        With a multidisciplinary foundation across <strong>Full-Stack Web Development</strong>, <strong>Python Automation</strong>, and <strong>Conversion SEO</strong>, I engineer digital assets that scale effortlessly.
+                    </p>
+
+                    <!-- Two Distinct Feature Cards -->
+                    <div class="ref-feature-cards-grid" style="margin-bottom: 2.5rem;">
+                        <div class="ref-feature-card glass-panel spotlight-card" data-sound="hover">
+                            <div class="feature-card-header">
+                                <div class="feature-icon-squircle"><i data-lucide="layout"></i></div>
+                                <span class="feature-tag">FEATURE 01</span>
+                            </div>
+                            <h3 class="feature-title">Bespoke Custom UI</h3>
+                            <p class="feature-desc">Tailored component systems built from scratch without bloated templates.</p>
+                        </div>
+
+                        <div class="ref-feature-card glass-panel spotlight-card" data-sound="hover">
+                            <div class="feature-card-header">
+                                <div class="feature-icon-squircle"><i data-lucide="gauge"></i></div>
+                                <span class="feature-tag">FEATURE 02</span>
+                            </div>
+                            <h3 class="feature-title">Sub-Second Core Web Vitals</h3>
+                            <p class="feature-desc">Strict asset optimization guaranteeing 99+ Google Lighthouse scores.</p>
+                        </div>
+                    </div>
+
+                    <div class="ref-split-actions">
+                        <a href="index.html#contact" class="btn-ref-primary" data-sound="click">
+                            <span>Start a Project</span>
+                            <i data-lucide="arrow-up-right"></i>
+                        </a>
+                        <a href="index.html#estimator" class="btn-ref-secondary" data-sound="click">
+                            <span>Cost Estimator</span>
+                            <i data-lucide="calculator"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Premium Framed Showcase Container with IMG_1485.PNG -->
+                <div class="ref-split-visual">
+                    <div class="ref-image-frame glass-panel spotlight-card">
+                        <div class="ref-frame-inner">
+                            <img src="assets/IMG_1485.PNG" alt="Aditya (Dito) - Full-Stack Architect & Web Developer" class="ref-showcase-img" loading="lazy">
+                            <div class="ref-frame-pill">
+                                <span class="cyan-micro-bar"></span>
+                                <span>Full-Stack Architect • Craft & Discipline</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. STRUCTURED WORKFLOW / PROCESS SECTION -->
+        <section id="process" class="ref-process-section section-padding reveal">
+            <div class="ref-section-header">
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> METHODOLOGY</div>
+                <h2 class="ref-section-title">The 5-Step <span class="highlight-orange">Workflow</span></h2>
+                <p class="ref-section-sub">A transparent, battle-tested execution process ensuring zero guesswork and punctual production delivery.</p>
+            </div>
+
+            <div class="ref-process-grid">
+                <!-- Step 01 -->
+                <div class="ref-step-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-step-num">01</span>
+                    <div class="ref-step-icon"><i data-lucide="compass"></i></div>
+                    <h3>Discover</h3>
+                    <p>Deep-dive strategy session to align on brand objectives, conversion goals, and technical specs.</p>
+                    <div class="ref-step-tag">Phase 1 • Strategy</div>
+                </div>
+
+                <!-- Step 02 -->
+                <div class="ref-step-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-step-num">02</span>
+                    <div class="ref-step-icon"><i data-lucide="file-spreadsheet"></i></div>
+                    <h3>Plan</h3>
+                    <p>Information architecture, wireframes, component hierarchy, and timeline milestone alignment.</p>
+                    <div class="ref-step-tag">Phase 2 • Blueprint</div>
+                </div>
+
+                <!-- Step 03 -->
+                <div class="ref-step-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-step-num">03</span>
+                    <div class="ref-step-icon"><i data-lucide="figma"></i></div>
+                    <h3>Design</h3>
+                    <p>High-fidelity Figma UI prototypes, tailored typography, dark theme tokens, and interactive reviews.</p>
+                    <div class="ref-step-tag">Phase 3 • Visuals</div>
+                </div>
+
+                <!-- Step 04 -->
+                <div class="ref-step-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-step-num">04</span>
+                    <div class="ref-step-icon"><i data-lucide="code-2"></i></div>
+                    <h3>Develop</h3>
+                    <p>Clean, type-safe development using React, Next.js, and modern CSS with private staging previews.</p>
+                    <div class="ref-step-tag">Phase 4 • Engineering</div>
+                </div>
+
+                <!-- Step 05 -->
+                <div class="ref-step-card glass-panel spotlight-card" data-sound="hover">
+                    <span class="ref-step-num">05</span>
+                    <div class="ref-step-icon"><i data-lucide="rocket"></i></div>
+                    <h3>Launch</h3>
+                    <p>Lighthouse 100 tuning, cross-browser QA audits, SEO schema validation, and zero-downtime deployment.</p>
+                    <div class="ref-step-tag">Phase 5 • Production</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. CALL-TO-ACTION (CTA) SECTION -->
+        <section id="services-cta" class="ref-cta-section section-padding reveal">
+            <div class="ref-cta-card glass-panel spotlight-card">
+                <div class="ref-cta-glow"></div>
+                <div class="ref-badge-tag"><span class="cyan-micro-dot"></span> READY TO BUILD?</div>
+                <h2 class="ref-cta-title">
+                    Ready to Elevate Your <br>
+                    <span class="highlight-orange">Digital Presence?</span>
+                </h2>
+                <p class="ref-cta-text">
+                    Whether you need a full-stack web application, a high-converting landing page, or custom Python automation, let's turn your vision into an exceptional digital product.
+                </p>
+                <div class="ref-cta-actions">
+                    <a href="index.html#contact" class="btn-ref-primary btn-glow" data-sound="click">
+                        <span>Get In Touch</span>
+                        <i data-lucide="arrow-up-right"></i>
+                    </a>
+                    <a href="index.html#estimator" class="btn-ref-secondary" data-sound="click">
+                        <span>Try Cost Estimator</span>
+                        <i data-lucide="calculator"></i>
+                    </a>
+                </div>
+                <div class="ref-cta-badges">
+                    <span><i data-lucide="clock"></i> 24h Fast Response</span>
+                    <span><i data-lucide="shield-check"></i> Fixed Quotes</span>
+                    <span><i data-lucide="check-circle-2"></i> 100% IP Ownership</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer (Matching Dito. Aesthetic) -->
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="ref-logo">Dito<span class="orange-dot">.</span></div>
+                    <p>Modern websites, web applications, and digital experiences that help businesses grow online.</p>
+                </div>
+                <div class="footer-links-group">
+                    <span class="f-group-title">Navigation</span>
+                    <a href="index.html">Home</a>
+                    <a href="index.html#about">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="index.html#estimator">Cost Estimator</a>
+                    <a href="index.html#skills">Skills</a>
+                    <a href="index.html#contact">Contact</a>
+                </div>
+                <div class="footer-links-group">
+                    <span class="f-group-title">Direct Reach</span>
+                    <a href="mailto:ditowebdesign@gmail.com">ditowebdesign@gmail.com</a>
+                    <a href="https://wa.me/916363561751" target="_blank" rel="noopener noreferrer">+91 6363561751 (WhatsApp)</a>
+                    <a href="https://www.instagram.com/inst.fit.dito/" target="_blank" rel="noopener noreferrer">Instagram: inst.fit.dito</a>
+                    <a href="https://www.linkedin.com/in/aditya-vb-132757320?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                        target="_blank" rel="noopener noreferrer">LinkedIn: Aditya VB</a>
+                </div>
+                <div class="footer-links-group">
+                    <span class="f-group-title">Services</span>
+                    <a href="services.html#services-grid">Web Development</a>
+                    <a href="services.html#services-grid">UI/UX Design</a>
+                    <a href="services.html#services-grid">Python Programming</a>
+                    <a href="services.html#services-grid">SEO Optimization</a>
+                    <a href="services.html#services-grid">Digital Marketing</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Aditya (Dito Web Design). All rights reserved.</p>
+                <div class="footer-badge">
+                    <span>Designed with passion & precision</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Cyber HUD Command Palette Modal (Ctrl+K) -->
+    <div class="hud-backdrop" id="hudBackdrop">
+        <div class="hud-window glass-panel" id="hudWindow">
+            <div class="hud-title-bar">
+                <div class="hud-term-title">
+                    <i data-lucide="terminal" class="hud-term-icon"></i>
+                    <span>DITO // CYBERNETIC COMMAND TERMINAL</span>
+                </div>
+                <button class="hud-close-btn" id="hudCloseBtn" aria-label="Close terminal"><i data-lucide="x"></i></button>
+            </div>
+
+            <div class="hud-input-row">
+                <span class="hud-prompt">dito@core:~$</span>
+                <input type="text" id="hudCommandInput" placeholder="Type a command or help (e.g. 'projects', 'theme', 'quote', 'matrix')..." autocomplete="off" spellcheck="false">
+                <button id="hudRunBtn" class="hud-run-btn">EXEC</button>
+            </div>
+
+            <div class="hud-output" id="hudOutput">
+                <p class="hud-system-msg"><span class="accent-text">System Ready.</span> Press [TAB] or click hints below to execute commands.</p>
+            </div>
+
+            <div class="hud-quick-hints">
+                <button class="hint-tag" data-cmd="projects">projects</button>
+                <button class="hint-tag" data-cmd="skills">skills</button>
+                <button class="hint-tag" data-cmd="quote">quote</button>
+                <button class="hint-tag" data-cmd="theme">theme</button>
+                <button class="hint-tag" data-cmd="contact">contact</button>
+                <button class="hint-tag" data-cmd="matrix">matrix</button>
+                <button class="hint-tag" data-cmd="clear">clear</button>
+                <button class="hint-tag" data-cmd="help">help</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons on load
+        lucide.createIcons();
+    </script>
+</body>
+</html>
