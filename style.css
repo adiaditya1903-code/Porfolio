@@ -2997,6 +2997,33 @@ a {
     color: var(--text-muted);
 }
 
+.linkedin-qr-card {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-subtle);
+    border-radius: 14px;
+}
+
+.linkedin-qr-card img {
+    width: 112px;
+    height: 112px;
+    padding: 0.35rem;
+    background: #fff;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.linkedin-qr-card p {
+    margin: 0.45rem 0 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: var(--text-secondary);
+}
+
 .social-channels {
     margin-top: 2rem;
     border-top: 1px solid var(--border-subtle);
@@ -3035,6 +3062,11 @@ a {
     border-color: var(--accent);
     color: var(--accent);
     transform: translateY(-3px);
+}
+
+.social-icon-link .brand-logo {
+    width: 21px;
+    height: 21px;
 }
 
 /* ==========================================================================
