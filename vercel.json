@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "mkdir -p public && cp index.html services.html style.css script.js public/ && cp -r assets image public/",
+  "buildCommand": "node vercel-build.js",
   "outputDirectory": "public",
   "cleanUrls": false,
   "trailingSlash": false
