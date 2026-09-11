@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "outputDirectory": ".",
+  "buildCommand": "mkdir -p public && cp index.html services.html style.css script.js public/ && cp -r assets image public/",
+  "outputDirectory": "public",
   "cleanUrls": false,
   "trailingSlash": false
 }
